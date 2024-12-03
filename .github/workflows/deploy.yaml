@@ -41,6 +41,8 @@ jobs:
       
       - name: Build distribution
         run: yarn && yarn build
+        env:
+          VITE_BASE_PATH: "/${{ github.event.repository.name }}/"
       
       - name: Setup Pages
         uses: actions/configure-pages@v5
