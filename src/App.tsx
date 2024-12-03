@@ -5,7 +5,7 @@ import { useState } from 'react'
 const store = createXRStore()
 
 export default function App() {
-  const [red, setRed] = useState(false)
+  const [red, setRed] = useState<boolean>(false)
   return (
     <>
       <button onClick={() => store.enterAR()}>Enter AR</button>
@@ -13,7 +13,7 @@ export default function App() {
         <XR store={store}>
           <mesh pointerEventsType={{ deny: 'grab' }} onClick={() => setRed(!red)} position={[0, 1, -1]}>
             <boxGeometry />
-            <meshBasicMaterial color={red ? 'red' : 'blue'} />
+            <meshBasicMaterial color={red ? 'red' : 'blue'}/>
           </mesh>
         </XR>
       </Canvas>
