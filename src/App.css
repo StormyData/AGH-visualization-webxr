@@ -40,3 +40,8 @@
 .read-the-docs {
   color: #888;
 }
+
+.appCanvas {
+  width: max-content;
+  height: max-content;
+}
