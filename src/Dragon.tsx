@@ -25,7 +25,7 @@ export default function Dragon() {
      
     return ( <>
         <mesh geometry={(nodes.dragon as Mesh).geometry}>
-            <meshPhongMaterial {...materials.Material} map={texture}/>
+            <meshPhongMaterial {...materials.Material} map={texture} specularMap={texture} lightMap={texture}/>
         </mesh>
     </>
     );
