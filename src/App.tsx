@@ -28,9 +28,9 @@ export default function App() {
       <Canvas>
         <React.Suspense fallback={<Loader/>}>
           <XR store={store}>
-            <pointLight position={[10, 10, 10]}/>
-            <ambientLight intensity={5}/>
-            <Dragon position={[0,0, -5]}/>
+            <pointLight position={[5, 5, 5]}/>
+            <ambientLight intensity={1}/>
+            <Dragon position={[0,0, -5]} receiveShadow={true}/>
 
             {/* <mesh pointerEventsType={{ deny: 'grab' }} onClick={() => setRed(!red)} position={[0, 1, -1]} geometry={nodes.}>
               <meshPhongMaterial />
