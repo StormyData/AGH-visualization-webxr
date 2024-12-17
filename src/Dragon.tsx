@@ -3,6 +3,7 @@ import { MeshProps, useGraph, useLoader } from '@react-three/fiber';
 import 'react-toastify/dist/ReactToastify.css';
 import {OBJLoader} from 'three/addons/loaders/OBJLoader.js';
 
+import * as THREE from 'three'
 import dragonModel from "./assets/dragon.obj?url";
 import dragonMtl from "./assets/dragon.mtl?url";
 import dragonTexture from "./assets/dragonskingold.jpg?url";
@@ -22,6 +23,8 @@ export default function Dragon(props: DragonProps) {
     });
     const {nodes, materials} = useGraph(model);
     const texture = useTexture(dragonTexture);
+    texture.wrapS = THREE.RepeatWrapping;
+    texture.wrapT = THREE.RepeatWrapping;
      
     return ( <>
         <mesh geometry={(nodes.dragon as Mesh).geometry} {...props}>
