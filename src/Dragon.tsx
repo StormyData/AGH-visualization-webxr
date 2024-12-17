@@ -14,7 +14,7 @@ export interface DragonProps extends MeshProps {
 
 }
 
-export default function Dragon() {
+export default function Dragon(props: DragonProps) {
     const mtl = useLoader(MTLLoader, dragonMtl);
     const model = useLoader(OBJLoader, dragonModel, (loader) => {
         mtl.preload();
@@ -24,7 +24,7 @@ export default function Dragon() {
     const texture = useTexture(dragonTexture);
      
     return ( <>
-        <mesh geometry={(nodes.dragon as Mesh).geometry}>
+        <mesh geometry={(nodes.dragon as Mesh).geometry} {...props}>
             <meshPhongMaterial {...materials.Material} map={texture} specularMap={texture} lightMap={texture}/>
         </mesh>
     </>

@@ -29,8 +29,8 @@ export default function App() {
         <React.Suspense fallback={<Loader/>}>
           <XR store={store}>
             <pointLight position={[10, 10, 10]}/>
-            <ambientLight/>
-            <Dragon/>
+            <ambientLight intensity={5}/>
+            <Dragon position={[0,0, -5]}/>
 
             {/* <mesh pointerEventsType={{ deny: 'grab' }} onClick={() => setRed(!red)} position={[0, 1, -1]} geometry={nodes.}>
               <meshPhongMaterial />
