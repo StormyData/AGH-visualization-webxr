@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Dragon from './Dragon';
 import Loader from './Loader';
 import React from 'react';
+import RedWalls from './RedWalls';
 
 const store = createXRStore();
 
@@ -31,7 +32,7 @@ export default function App() {
             <pointLight position={[5, 5, 5]} intensity={4}/>
             <ambientLight intensity={0.2}/>
             <Dragon position={[0,0, -5]} receiveShadow={true}/>
-
+            <RedWalls/>
             {/* <mesh pointerEventsType={{ deny: 'grab' }} onClick={() => setRed(!red)} position={[0, 1, -1]} geometry={nodes.}>
               <meshPhongMaterial />
             </mesh> */}
