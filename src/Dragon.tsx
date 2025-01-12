@@ -1,6 +1,6 @@
 import {RootState, useFrame, useLoader} from '@react-three/fiber';
 import { useState } from 'react';
-import {useXR, useXRAnchor, useXRPlanes, XRSpace} from '@react-three/xr';
+import {XRSpace} from '@react-three/xr';
 import {OBJLoader} from 'three/addons/loaders/OBJLoader.js';
 
 import * as THREE from 'three'
@@ -40,7 +40,7 @@ export default function Dragon() {
   //     }
   //   }
   // };
-  useFrame((state: RootState, delta: number, frame?: _XRFrame) => {
+  useFrame((_state: RootState, _delta: number, frame?: _XRFrame) => {
     if (frame === undefined) {
       return;
     }

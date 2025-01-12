@@ -12,6 +12,7 @@ const imgBitmap = await createImageBitmap(img, {});
 const store = createXRStore({
   customSessionInit: {
     requiredFeatures: ["anchors", "image-tracking", "local-floor"],
+    // @ts-ignore
     trackedImages: [
       {
         image: imgBitmap,
