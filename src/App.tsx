@@ -6,8 +6,20 @@ import 'react-toastify/dist/ReactToastify.css';
 import Dragon from './Dragon';
 import Loader from './Loader';
 import React from 'react';
-
-const store = createXRStore();
+const img = document.getElementById('bitmap') as HTMLImageElement;
+// Ensure the image is loaded and ready for use
+const imgBitmap = await createImageBitmap(img, {});
+const store = createXRStore({
+  customSessionInit: {
+    requiredFeatures: ["anchors", "image-tracking", "local-floor"],
+    trackedImages: [
+      {
+        image: imgBitmap,
+        widthInMeters: 0.2
+      }
+    ]
+  }
+});
 
 export default function App() {
   // const [red, setRed] = useState<boolean>(false);
