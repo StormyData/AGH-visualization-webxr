@@ -5,6 +5,9 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, process.cwd());
   return {
+    build: {
+      target: 'esnext'
+    },
     plugins: [react()],
     base: env.VITE_BASE_PATH ?? "/",
     server: {
