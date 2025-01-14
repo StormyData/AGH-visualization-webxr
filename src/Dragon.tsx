@@ -14,13 +14,7 @@ import { _XRFrame } from '@react-three/fiber/dist/declarations/src/core/utils';
 
 
 export default function Dragon() {
-  // const xr = useXR(xr => xr.session);
-  // console.log(xr?.enabledFeatures);
-  
-
   const [space, setSpace] = useState(null);
-  // const [anchor, requestAnchor] = useXRAnchor();
-  // const planes = useXRPlanes();
 
   const mtl = useLoader(MTLLoader, dragonMtl);
   const model = useLoader(OBJLoader, dragonModel, (loader) => {
@@ -32,14 +26,6 @@ export default function Dragon() {
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
 
-  // const handlePlaneDetection = () => {
-  //   for (const plane of planes) {
-  //     if (plane.orientation === 'horizontal') {
-        
-  //       break;
-  //     }
-  //   }
-  // };
   useFrame((_state: RootState, _delta: number, frame?: _XRFrame) => {
     if (frame === undefined) {
       return;
@@ -48,17 +34,11 @@ export default function Dragon() {
     for (const result of results) {
       console.log(result);
       setSpace(result.trackingState  === "tracked" ? result.imageSpace : null);
-      // requestAnchor({ relativeTo: "space", space: result.imageSpace});
     }
   });
 
   return (
     <>
-    {/* {planes.length > 0 && !anchor && (() => {
-        handlePlaneDetection();
-        return null;
-    })()} */}
-
     {space && (
         <XRSpace space={space}>
         <mesh geometry={(model.children[0] as Mesh).geometry} scale={[0.1, 0.1, 0.1]}>

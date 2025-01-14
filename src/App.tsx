@@ -1,6 +1,5 @@
 import { Canvas } from '@react-three/fiber';
 import { XR, createXRStore } from '@react-three/xr';
-// import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Dragon from './Dragon';
@@ -12,7 +11,7 @@ const imgBitmap = await createImageBitmap(img, {});
 const store = createXRStore({
   customSessionInit: {
     requiredFeatures: ["anchors", "image-tracking", "local-floor"],
-    // @ts-ignore
+    // @ts-expect-error the tracked images are passed correctly all the way down to navigator.xr.requestSession, but the type does not include it
     trackedImages: [
       {
         image: imgBitmap,
@@ -23,7 +22,6 @@ const store = createXRStore({
 });
 
 export default function App() {
-  // const [red, setRed] = useState<boolean>(false);
   
   async function enterSession() {
     await store.enterAR().catch((reason) => {
@@ -44,9 +42,6 @@ export default function App() {
             <pointLight position={[5, 5, 5]} intensity={4}/>
             <ambientLight intensity={0.2}/>
             <Dragon/>
-            {/* <mesh pointerEventsType={{ deny: 'grab' }} onClick={() => setRed(!red)} position={[0, 1, -1]} geometry={nodes.}>
-              <meshPhongMaterial />
-            </mesh> */}
           </XR>
         </React.Suspense>
       </Canvas>
